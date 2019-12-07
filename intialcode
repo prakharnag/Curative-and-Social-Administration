@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+from flask import Flask,render_template, request,redirect, url_for,flash,session
+#from pymongo import MongoClient 
+#from bson import ObjectId
+from flask import Flask
+#from flask_bcrypt import Bcrypt
+#from flask_pymongo import PyMongo
+#from flask.ext.pymongo import PyMongo
+#from pymongo import PyMongo 
+#from flash_pymongo import PyMongo
+#import os, sys
+#import bcrypt
+#import datetime
+#import hashlib
+#import json
+
+def date_Time():
+ obj_Date_Time=datetime.datetime.now()
+ return obj_Date_Time.__str__()
+app=Flask(__name__)
+
+blocks= []
+blocks.append([])
+Genesis = {
+ 		"prev_hash": None,
+ 		"dataValues": "Just Initialising",
+ 		"datetime_object": date_Time()
+	}
+blocks[0].append(Genesis)
+hashes=[]
+pID=1
+block_serialized = json.dumps(blocks[0], sort_keys=True).encode("utf-8")
+abc = hashlib.sha256(block_serialized).hexdigest()
+hashes.append(abc)
+
+client = MongoClient("localhost", 27017)
+
+hospd = client.hospital_db		#database for hospital
+hospc=hospd.hospital_info		#collection(table) to store documents of hospital 
+
+pat_info=hospd.patient_info		#collection(table) to store documents of patient 
+
+hash_control=hospd.hash_info		#collection to store hash values of patient's document
+
+

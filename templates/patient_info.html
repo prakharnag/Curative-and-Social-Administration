@@ -1,0 +1,74 @@
+<html>
+<head>
+</head>
+<style>
+h1{
+text-decoration: underline;
+color:#0C2A50;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+</style>
+<body bgcolor="#7AB4D3">
+<center><h1>HEALTY-BLOCKCHAIN</h1></center>
+<a href="http://127.0.0.1:8089/homepage2?action=ARE+YOU+A+HOSPITAL">GO BACK</a>
+<a href="http://127.0.0.1:8089/">LOGOUT</a>
+<center><form action="/create_block" method="POST">
+         <table>
+        <br>
+        <tr>
+	<td> <label for="uname"><b> PATIENT NAME</b></label></td>
+        <td><input type="text" placeholder="Enter Name" name="name" required></td></tr>
+  
+         <tr><td> <label for="age"><b>AGE</b></label>
+         <td> <input type="text" placeholder="Enter Age" name="age" required></td></tr>
+
+	<tr><td> <label for="dob"><b>DOB</b></label>
+         <td> <input type="date" name="dob" required></td></tr>
+	
+	 <tr><td> <label for="occup"><b>Occupation</b></label>
+         <td> <input type="text" placeholder="Enter Address" name="occupation" required></td></tr>
+	
+	 <tr><td> <label for="gender"><b>GENDER</b></label>
+         <td>Male <input type="radio" name="gender" value="male">
+             Female <input type="radio" name="gender" value="female">
+	     Others <input type="radio" name="gender" value="other"></td>
+ 
+         <tr><td> <label for="add"><b> PERMANENT ADDRESS</b></label>
+         <td> <input type="text" placeholder="Enter Address" name="address" required></td></tr>
+
+         <tr><td> <label for="numb"><b>CONTACT NUMBER</b></label>
+         <td><input type="text" placeholder="Enter Contact No." name="contact" required></td></tr>
+ 
+         <tr><td><label for="mail"><b>E-MAIL</b></label>
+         <td><input type="email" placeholder="Enter email" name="email" required>  </td></tr>
+
+<tr>
+	<td> <label for="relation"><b>RELATIONSHIP WITH PATIENT</b></label></td>
+        <td><input type="text" name="relation" required></td></tr>
+
+	<tr><td> <label for="relation"><b>DIAGNOSIS REPORT</b></label></td>
+		<td><input type="text" name="report" required></td></tr>
+
+	
+
+	
+	
+
+            <tr></tr>  <tr></tr> <tr></tr> <tr></tr><tr></tr><tr></tr><tr></tr>  
+
+	  
+      
+         <tr><td style="text-align: center"><button type="submit" value="submit">SUBMIT</button></td>
+    
+	<td><button type="reset" value="reset">RESET</button></td></tr>
+
+        </table>
+          
+</form>
+</center>

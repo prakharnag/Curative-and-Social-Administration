@@ -1,0 +1,46 @@
+<html>
+<head>
+</head>
+<body>
+<center><h2>BLOCKCHAIN-HEALTHCARE SYSTEM</h2></center>
+<center><form action="/success" method="POST">
+         <table>
+        <tr>
+          <th>SIGN UP</th>    
+        </tr>    
+        <tr><td> <label for="uname"><b>NAME</b></label></td></tr>
+        <tr><td><input type="text" placeholder="Enter Name" name="name" required></td></tr>
+  
+         <tr><td> <label for="psw2"><b>PASSWORD</b></label>
+         <tr><td> <input type="password" placeholder="Enter Password" name="password" required></td></tr>
+        
+         <tr><td> <label for="add"><b>ADDRESS</b></label>
+         <tr><td> <input type="text" placeholder="Enter Address" name="address" required></td></tr>
+
+         <tr><td> <label for="numb"><b>CONTACT NUMBER</b></label>
+         <tr><td><input type="text" placeholder="Enter Contact No." name="contact" required></td></tr>
+ 
+         <tr><td><label for="mail"><b>E-MAIL</b></label>
+         <tr><td><input type="text" placeholder="Enter email" name="email" required>  </td></tr>
+                                            
+         <tr><td><button type="submit" value="submit1">SUBMIT</button></td></tr>
+    
+        </table>
+          
+</form>
+</center>
+{% with messages= get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<h3>{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+</body>
+</html>
+
+
+
+
+
+
