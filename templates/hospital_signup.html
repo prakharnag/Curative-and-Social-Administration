@@ -50,8 +50,23 @@ img{
 body{
     background-color: cornsilk;
 }
-
-
+label {
+    /* Other styling... */
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:300px;
+    margin-left: 300px;
+}
+#hosp_name{
+    margin-left:2rem;
+}
+#password{
+    margin-left:2rem;
+}
+#hosp_no.{
+    margin-left:2rem;
+}
 </style>
 <body>
         <div class="header">        	
@@ -73,26 +88,33 @@ body{
         </div>
         <div id="home">               
             <form id="signup" autocomplete="off" action="/">
-                <div>
-                    <label>Hospital Name </label>
-                    <input type="text" class="form-group" id="hosp_name" />
+                <div class="form-group col-md-6">
+                    <label for="hosp_name">Hospital Name </label>
                 </div>
-                <div>
-                    <label>Password</label>
+                <div class="form-group">
+                    <label for="password">Password</label>
                     <input type="text" class="form-group" id="password" />
                 </div>
-                <div>
-                    <label>Hospital Registration No. </label>
+                <div class="form-group">
+                    <label for="hosp_no">Hospital Registration No. </label>
                     <input type="text" class="form-group" id="hosp_no" />
                 </div>
-                <div>
-                    <label>Accrediation </label>
+                <div class="form-group">
+                    <label for="acc">Accrediation </label>
                     <textarea rows="4" cols="50" class="form-group" id="acc"></textarea>
                 </div>
-                
-                
+                <div class="form-group">
+                    <label for="add">Address</label>
+                    <textarea rows="4" cols="50" class="form-group" id="add"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="land_no">Landline No. </label>
+                    <input type="text" class="form-group" id="land_no" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="w3-button w3-grey w3-round-large" value="signup" id="buttons">Sign-Up</button>
+                </div>
 
-   
             </form>
         </div>    
             
