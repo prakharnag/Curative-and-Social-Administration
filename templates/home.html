@@ -58,14 +58,14 @@ body{
 <body>
     <div class="header">        	
         <div class="logo" style="float:left;position:relative;">
-            <img src="/assets/images/casa.png"  alt="" />                	
+            <img src="/static/images/casa.png " alt=""/>
         </div>
         <div class="header-left">
             CASA
         </div>
         <div class="header-right">
-            <a href="\home\prakhar\Desktop\major1\templates\hospital.html">Hospital</a>
-            <a href="#contact">Patient</a>
+            <a href="{{ url_for('hospital') }}">Hospital</a>
+            <a href="{{ url_for('patient') }}">Patient</a>
             <a href="#about">Pharma</a>
             <a href="#about">Insurance</a>
             <a href="#about">Contact Us</a>

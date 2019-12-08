@@ -1,26 +1,76 @@
 # -*- coding: utf-8 -*-
-from flask import Flask,render_template, request,redirect, url_for,flash,session
+# from flask import Flask,render_template, request,redirect, url_for,flash,session
+# from flask import Flask
+# import os
+# from flask import jsonify
+# from flask import request
+# from flask_pymongo import PyMongo
 from flask import Flask
 
+import pymongo
+from flask import Flask,render_template, request,redirect, url_for,flash,session
+from pymongo import MongoClient 
+# from bson import ObjectId
+# from flask_bcrypt import Bcrypt
+from flask_pymongo import PyMongo
+import os, sys
+# import bcrypt
+import datetime
+import hashlib
+import json
+import cgi
+
+
+client = MongoClient("localhost", 27017)
+# myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+# mydb = myclient["casa"]
 def date_Time():
  obj_Date_Time=datetime.datetime.now()
  return obj_Date_Time.__str__()
+
+
 app=Flask(__name__)
 
+# app.config['MONGO_DBNAME'] = 'casa'
+# app.config['MONGO_URI'] = 'mongodb://localhost:27017/casa'
+# mongo = PyMongo(app)
+client = MongoClient("localhost", 27017)
+test=client.abcd
+control=test.info
+
+mydict = { "name": "John", "address": "Highway 37" }
+x = control.insert_one(mydict)
 
 @app.route("/",methods=["GET"])
 def index():
 
 	return render_template("home.html")
+	
 
+@app.route("/hospital",methods=["GET"])
+def hospital():
+	return render_template("hospital.html")
+	
 
-@app.route("/homepage2")
-def homepage2():
+@app.route("/hospital_credentials")
+def hospital_signup():
 	action=request.values.get('action')
-	if(action=="ARE YOU A HOSPITAL"):
-   	   return render_template("homepage2.html")
-	elif(action=="ARE YOU A PATIENT"):
-	   return render_template("patientlogin.html")
+	if(action=="signup"):
+		return render_template("hospital_signup.html")
+
+
+@app.route("/patient",methods=["GET"])
+def patient():
+	return render_template("patient.html")
+
+	# elif
+	# 	return render_template("")
+
+	# action=request.values.get('action')
+	# if(action=="ARE YOU A HOSPITAL"):
+   	#    return render_template("homepage2.html")
+	# elif(action=="ARE YOU A PATIENT"):
+	#    return render_template("patientlogin.html")
 
 @app.route("/hospital")
 def login():

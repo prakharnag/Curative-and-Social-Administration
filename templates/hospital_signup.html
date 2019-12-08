@@ -56,22 +56,37 @@ label {
     clear: both;
     float:left;
     margin-right:300px;
-    margin-left: 300px;
+    margin-left: 200px;
+    padding: 7px;
+    /* margin-top: -41px; */
 }
-#hosp_name{
-    margin-left:2rem;
+input[type=text],textarea {
+    float: right;
+    /* margin-top:-41px; */
 }
-#password{
-    margin-left:2rem;
+
+form{
+    position: absolute;
+	/* top:0;
+	bottom: 0;
+	left: 0;
+	right: 0; */
+    border: 1px solid;
+    width: 69rem;
+    padding-right: 11rem;
+    padding-top: 5rem;
+    margin: 2rem 2rem 2rem 2rem;
+    height: 23rem;
 }
-#hosp_no{
-    margin-left:2rem;
-}
+button{
+    margin-top: 19rem;
+    margin-left: -14rem;
+    }
 </style>
 <body>
         <div class="header">        	
                 <div class="logo" style="float:left;position:relative;">
-                    <img src="/home/prakhar/Desktop/major1/templates/casa.png"  alt="Curative and Social Administration" />                	
+                    <img src="/static/images/casa.png"  alt="Curative and Social Administration" />                	
                 </div>
                 <div class="header-left">
                     CASA
@@ -86,37 +101,62 @@ label {
             </div>
             <hr>
         </div>
-        <div id="home">               
-            <form id="signup" autocomplete="off" action="/">
+        <form id="signup" autocomplete="off" action="/">
+             <div id="home">      
+                <div class="form-group">
+                    <label for="hosp_no">Hospital Registration No. </label>
+                    <input type="text" class="form-group" id="hosp_no" name="hospital_no"/>
+                </div>    
                 <div class="form-group col-md-6">
                     <label for="hosp_name">Hospital Name </label>
+                    <input type="text" class="form-group" id="hosp_name" name="hospital_name" />
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" class="form-group" id="password" />
+                    <input type="text" class="form-group" id="password" name="pass"/>
                 </div>
                 <div class="form-group">
-                    <label for="hosp_no">Hospital Registration No. </label>
-                    <input type="text" class="form-group" id="hosp_no" />
+                        <label for="land_no">Landline No. </label>
+                        <input type="text" class="form-group" id="land_no" name="landline_no"/>
                 </div>
                 <div class="form-group">
                     <label for="acc">Accrediation </label>
-                    <textarea rows="4" cols="50" class="form-group" id="acc"></textarea>
+                    <textarea rows="4" cols="50" class="form-group" id="acc" name="accrediation"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="add">Address</label>
-                    <textarea rows="4" cols="50" class="form-group" id="add"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="land_no">Landline No. </label>
-                    <input type="text" class="form-group" id="land_no" />
+                    <textarea rows="4" cols="50" class="form-group" id="add" name="address"></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="w3-button w3-grey w3-round-large" value="signup" id="buttons">Sign-Up</button>
                 </div>
+             </div>    
+        </form>     
 
-            </form>
-        </div>    
-            
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('form').submit(function(e){
+        var hospital_no=input[name='hospital_no'].val();
+        var hospital_name=input[name='hospital_name'].val();
+        var password=input[name='pass'].val();
+        var landline=input[name='landline_no'].val();
+        var accrediation=input[name='accrediation'].val();
+        var address=input[name='address'].val();
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

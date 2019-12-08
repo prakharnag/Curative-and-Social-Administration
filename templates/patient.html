@@ -122,14 +122,14 @@ form{
 <body>
         <div class="header">        	
                 <div class="logo" style="float:left;position:relative;">
-                    <img src="/home/prakhar/Desktop/major1/templates/casa.png"  alt="Curative and Social Administration" />                	
+                    <img src="/static/images/casa.png"  alt="" />                	
                 </div>
                 <div class="header-left">
                     CASA
                 </div>
                 <div class="header-right">
-                    <a href="#home">Hospital</a>
-                    <a href="#contact">Patient</a>
+                    <a href="{{ url_for('hospital') }}">Hospital</a>
+                    <a href="{{ url_for('patient') }}">Patient</a>
                     <a href="#about">Pharma</a>
                     <a href="#about">Insurance</a>
                     <a href="#about">Contact Us</a>
@@ -139,16 +139,16 @@ form{
         </div>
         <div id="home">
                 <div id="ad">
-                    <img src="/home/prakhar/Desktop/major1/assets/images/patient.png" id="admin">
+                    <img src="/static/images/patient.png" id="admin">
                 </div>
                  <form id="login" autocomplete="off" action="/">
                     <div id="input_container">
                         <input type="text" class="form-group" id="username" placeholder="User-Name"/>
-                        <img src="/home/prakhar/Desktop/major1/assets/images/user.png" id="user_img"/> 
+                        <img src="/static/images/user.png" id="user_img"/> 
                     </div>
                     <div id="input_container">
                         <input type="password" class="form-group" id="pass" placeholder="Password" value>
-                        <img src="/home/prakhar/Desktop/major1/assets/images/password.jpeg" id="pass_img"/>   
+                        <img src="/static/images/password.jpeg" id="pass_img"/>   
                     </div>  
                     <div class="form-group" id="entry">
                         <button type="submit" class="w3-button w3-grey w3-round-large" value="signin" id="buttons">Sign-In</button>                    </div>

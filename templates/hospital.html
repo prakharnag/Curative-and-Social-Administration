@@ -69,7 +69,7 @@ form{
 	bottom: 0;
 	left: 0;
 	right: 0;
-  	margin: 13rem 6rem 6rem; 
+  	/* margin: 13rem 6rem 6rem;  */
 }
 #admin{
     width:7rem;
@@ -81,26 +81,26 @@ form{
 }
 #pass {
     height: 20px;
-    margin-left: -22px;   
+    margin-left: 75px;   
     padding-left: 1px;
     margin-top: 14px;
 }
 #hospitalname{
     height: 20px;
-    margin-left: -22px;
-    padding-left: 1px;
+    margin-left: 75px;
+    padding-left: 0px;
 }
 #pass_img {
     position: absolute;
     bottom: 6px;
-    left: 193px;
+    left: 260px;
     width: 24px;
     height: 21px;
 }
 #user_img {
     position: absolute;
     bottom: 6px;
-    left: 198px;
+    left: 267px;
     width: 13px;
     height: 16px;
 }
@@ -110,7 +110,8 @@ form{
     margin:0;
 }
 #entry{
-    margin:2.5rem;
+    margin-left: 5rem;
+    margin-top: 1rem;
 }
 #buttons{
     width:7rem;
@@ -122,14 +123,14 @@ form{
 <body>
         <div class="header">        	
                 <div class="logo" style="float:left;position:relative;">
-                    <img src="/home/prakhar/Desktop/major1/templates/casa.png"  alt="Curative and Social Administration" />                	
+                    <img src="/static/images/casa.png"  alt="Curative and Social Administration" />                	
                 </div>
                 <div class="header-left">
                     CASA
                 </div>
                 <div class="header-right">
-                    <a href="#home">Hospital</a>
-                    <a href="#contact">Patient</a>
+                    <a href="{{ url_for('hospital') }}">Hospital</a>
+                    <a href="{{ url_for('patient') }}">Patient</a>
                     <a href="#about">Pharma</a>
                     <a href="#about">Insurance</a>
                     <a href="#about">Contact Us</a>
@@ -137,25 +138,26 @@ form{
             </div>
             <hr>
         </div>
+        <form action="hospital_credentials" method="GET">
         <div id="home">
                 <div id="ad">
-                    <img src="/home/prakhar/Desktop/major1/assets/images/hospital2.png" id="admin">
+                    <img src="/static/images/hospital2.png" id="admin">
                 </div>
                  <form id="login" autocomplete="off" action="/">
                     <div id="input_container">
                         <input type="text" class="form-group" id="hospitalname" placeholder="Hospital-Name"/>
-                        <img src="/home/prakhar/Desktop/major1/assets/images/user.png" id="user_img"/> 
+                        <img src="/static/images/user.png" id="user_img"/> 
                     </div>
                     <div id="input_container">
                         <input type="password" class="form-group" id="pass" placeholder="Password" value>
-                        <img src="/home/prakhar/Desktop/major1/assets/images/password.jpeg" id="pass_img"/>   
+                        <img src="/static/images/password.jpeg" id="pass_img"/>   
                     </div>  
                     <div class="form-group" id="entry">
-                        <button type="submit" class="w3-button w3-grey w3-round-large" value="Login" id="buttons">Login</button>
-                        <button type="submit" class="w3-button w3-grey w3-round-large" value="signup" id="buttons">Sign-Up</button>
+                        <button type="submit" class="w3-button w3-grey w3-round-large" value="login" id="buttons" name="action">Login</button>
+                        <button type="submit" class="w3-button w3-grey w3-round-large" value="signup" id="buttons" name="action">Sign-Up</button>
 
                     </div>
-                  </form>
+             </form>
         </div>    
             
 </body>
