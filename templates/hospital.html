@@ -143,13 +143,13 @@ form{
                 <div id="ad">
                     <img src="/static/images/hospital2.png" id="admin">
                 </div>
-                 <form id="login" autocomplete="off" action="/">
+                 <form id="login" autocomplete="off" method="POST">
                     <div id="input_container">
-                        <input type="text" class="form-group" id="hospitalname" placeholder="Hospital-Name"/>
+                        <input type="text" class="form-group" id="hospitalname" placeholder="Hospital-Name" name="name"/>
                         <img src="/static/images/user.png" id="user_img"/> 
                     </div>
                     <div id="input_container">
-                        <input type="password" class="form-group" id="pass" placeholder="Password" value>
+                        <input type="password" class="form-group" id="pass" placeholder="Password" name="password">
                         <img src="/static/images/password.jpeg" id="pass_img"/>   
                     </div>  
                     <div class="form-group" id="entry">

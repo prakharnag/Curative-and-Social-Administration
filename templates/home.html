@@ -5,12 +5,13 @@
 <meta http-equiv="X-UA-Compatabile" content="IE-Edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HOME | CASA</title>
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
 <style>
 img{
     width: 150px;
     height: 110px;
+    margin-top: 1rem;
 }
 .header{
     overflow: hidden;
@@ -66,9 +67,9 @@ body{
         <div class="header-right">
             <a href="{{ url_for('hospital') }}">Hospital</a>
             <a href="{{ url_for('patient') }}">Patient</a>
-            <a href="#about">Pharma</a>
-            <a href="#about">Insurance</a>
-            <a href="#about">Contact Us</a>
+            <a href="{{ url_for('pharma') }}">Pharma</a>
+            <a href="{{ url_for('insurance') }}">Insurance</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
         </div>
     </div>
     <hr>

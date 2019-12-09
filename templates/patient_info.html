@@ -1,74 +1,192 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatabile" content="IE-Edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HOME | CASA</title>
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
 <style>
-h1{
-text-decoration: underline;
-color:#0C2A50;
+img{
+    width: 150px;
+    height: 110px;
+    margin-top: 1rem;
+}
+.header{
+    overflow: hidden;
+    /* background-color: #f1f1f1; */
+    height: 110px;
+    width:auto;
+    background-color:cornsilk;
+}
+.header-right {
+    float: right;
+    padding-top: 28px;
+    padding-right: 38px;
+  }
+.header-left {
+    float: left;
+    padding:43px 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size:120% ;
+    letter-spacing: 1.2em;
+  }
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+body{
+    background-color: cornsilk;
+}
+label {
+    /* Other styling... */
+    text-align: right;
+    clear: both;
+    float: left;
+    margin-right: 152px;
+    margin-left: 200px;
+    /* margin-top: -41px; */
+}
+input[type=text],textarea,input[type=date],input[type=email],input[type=radio]{
+    float: right;
+    /* margin-top:-41px; */
+}
+#gender{
+        float: right;
 }
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 10px 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+form{
+    position: absolute;
+	/* top:0;
+	bottom: 0;
+	left: 0;
+	right: 0; */
+    /* border: 1px solid;        */
+    width: 69rem;
+    padding-right: 7rem;
+    padding-top: 0rem;
+    margin: 2rem 2rem 2rem 2rem;
+    height: 50rem;
+}
+.form-group{
+        width:115%;
+        padding: 0.5rem;
+}
+.sex{
+        widows: 50px;
+}
+button{
+    margin-top: 5rem;
+    margin-left: 0rem;
+    margin-right: 3rem;
+    }
+#male{
+margin-right:-10rem;
+}
+#female{
+        margin-right:-11.2rem;
+}
+#others{
+        margin-right:-10.77rem;
+
+}
 </style>
-<body bgcolor="#7AB4D3">
-<center><h1>HEALTY-BLOCKCHAIN</h1></center>
-<a href="http://127.0.0.1:8089/homepage2?action=ARE+YOU+A+HOSPITAL">GO BACK</a>
+
+<body>
+        <div class="header">        	
+                <div class="logo" style="float:left;position:relative;">
+                        <img src="/static/images/casa.png " alt=""/>
+                </div>
+                <div class="header-left">
+                        CASA
+                </div>
+                <div class="header-right">
+                        <a href="{{ url_for('hospital') }}">Hospital</a>
+                        <a href="{{ url_for('patient') }}">Patient</a>
+                        <a href="#about">Pharma</a>
+                        <a href="#about">Insurance</a>
+                        <a href="#about">Contact Us</a>
+                </div>
+        </div>
+        <hr>
 <a href="http://127.0.0.1:8089/">LOGOUT</a>
-<center><form action="/create_block" method="POST">
-         <table>
-        <br>
-        <tr>
-	<td> <label for="uname"><b> PATIENT NAME</b></label></td>
-        <td><input type="text" placeholder="Enter Name" name="name" required></td></tr>
-  
-         <tr><td> <label for="age"><b>AGE</b></label>
-         <td> <input type="text" placeholder="Enter Age" name="age" required></td></tr>
+<form action="/create_block" method="POST">
+         <div class="form-group">
+	        <label for="uname"><b> PATIENT NAME</b></label></td>
+                <input type="text" placeholder="Enter Name" name="name" required>
+        </div>
+        <div class="form-group">
+                <label for="age"><b>AGE</b></label>
+                <input type="text" placeholder="Enter Age" name="age" required>
+        </div>
+        <div class="form-group">
+                <label for="occup"><b>Occupation</b></label>
+                <input type="text" placeholder="Enter Occupation" name="occupation" required>
+         </div>
+	<div class="form-group">
+                <label for="dob"><b>DOB</b></label>
+                <input type="date" name="dob" required>
+        </div>
+        <div class="form-group">
+                <label for="gender"><b>GENDER</b></label>
+                <div class="form-group sex">
+                        <label id ="gender">Male</label>  <input type="radio" name="gender" value="male" id="male">
+                </div>
+                 <div class="form-group">
+                        <label id ="gender">Female</label> <input type="radio" name="gender" value="female" id="female">
 
-	<tr><td> <label for="dob"><b>DOB</b></label>
-         <td> <input type="date" name="dob" required></td></tr>
-	
-	 <tr><td> <label for="occup"><b>Occupation</b></label>
-         <td> <input type="text" placeholder="Enter Address" name="occupation" required></td></tr>
-	
-	 <tr><td> <label for="gender"><b>GENDER</b></label>
-         <td>Male <input type="radio" name="gender" value="male">
-             Female <input type="radio" name="gender" value="female">
-	     Others <input type="radio" name="gender" value="other"></td>
- 
-         <tr><td> <label for="add"><b> PERMANENT ADDRESS</b></label>
-         <td> <input type="text" placeholder="Enter Address" name="address" required></td></tr>
-
-         <tr><td> <label for="numb"><b>CONTACT NUMBER</b></label>
-         <td><input type="text" placeholder="Enter Contact No." name="contact" required></td></tr>
- 
-         <tr><td><label for="mail"><b>E-MAIL</b></label>
-         <td><input type="email" placeholder="Enter email" name="email" required>  </td></tr>
-
-<tr>
-	<td> <label for="relation"><b>RELATIONSHIP WITH PATIENT</b></label></td>
-        <td><input type="text" name="relation" required></td></tr>
-
-	<tr><td> <label for="relation"><b>DIAGNOSIS REPORT</b></label></td>
-		<td><input type="text" name="report" required></td></tr>
-
-	
-
-	
-	
-
-            <tr></tr>  <tr></tr> <tr></tr> <tr></tr><tr></tr><tr></tr><tr></tr>  
-
-	  
-      
-         <tr><td style="text-align: center"><button type="submit" value="submit">SUBMIT</button></td>
-    
-	<td><button type="reset" value="reset">RESET</button></td></tr>
-
-        </table>
-          
+                </div>
+                <div class="form-group">
+	                <label id ="gender">Others</label><input type="radio" name="gender" value="other" id="others">
+                </div>        
+        </div>
+        <div class="form-group">
+                <label for="add"><b> PERMANENT ADDRESS</b></label>
+                <input type="text" placeholder="Enter Address" name="address" required>
+        </div>
+         <div class="form-group">
+                 <label for="numb"><b>CONTACT NUMBER</b></label>
+                <input type="text" placeholder="Enter Contact No." name="contact" required>
+        </div>
+        <div class="form-group">
+                <label for="mail"><b>E-MAIL</b></label>
+                <input type="email" placeholder="Enter email" name="email" required>
+        </div>
+        <div class="form-group"> 
+                <label for="relation"><b>RELATIONSHIP WITH PATIENT</b></label>
+                <input type="text" name="relation" required>
+        </div>
+        <div class="form-group">
+	        <label for="relation"><b>DIAGNOSIS REPORT</b></label>
+		<input type="text" name="report" required>  
+        </div>
+        <div class="form-group">
+                <button type="reset" value="reset">RESET</button>
+	        <button type="submit" value="submit">SUBMIT</button>
+               
+        </div>
 </form>
-</center>
+
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+  $('form').submit(function(e){
+
+
+});
+});
+</script> -->
+</body>
+</html>
