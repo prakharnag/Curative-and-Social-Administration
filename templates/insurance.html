@@ -51,9 +51,20 @@ img{
 body{
     background-color: cornsilk;
 }
-.about{
-    text-align: center;
-    margin:2%;
+
+table,th,tr,td{
+    border:1px solid black;
+    padding: 5px;
+    margin: 2px;
+    width:fit-content;
+    
+    /* border-radius: 2px; */
+}
+td{
+    text-align:justify;
+}
+.lists{
+    margin:2rem;
 }
 </style>
 <body>
@@ -67,9 +78,54 @@ body{
         <div class="header-right">
             <a href="{{ url_for('hospital') }}">Hospital</a>
             <a href="{{ url_for('patient') }}">Patient</a>
-            <a href="{{ url_for('pharma') }}">Pharma</a>
+            <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
             <a href="{{ url_for('insurance') }}">Insurance</a>
             <a href="{{ url_for('contact') }}">Contact Us</a>
         </div>
     </div>
     <hr>
+    <form action="viewdata" method="POST">
+        <div>
+            <label><b>Patient id</b></label>
+            <input type="text" placeholder="Enter patient-id" name="pid" required>
+        </div> 
+        <div>
+            <label><b>Patient Unique-id</b></label>
+            <input type="text" placeholder="Enter patient Unique -id" name="unique_pid" required>
+        </div> 
+        <div>
+            <button type="submit" value="submit" name="enter" name="action">ENTER</button></td></tr>
+        </div>
+    </form>
+
+    <div class="lists">
+        
+        <table>
+              
+             <tr>
+                <th>Name</th>
+                <th>Diagnostic_Report</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>occupation</th>
+                <th>email</th>
+                <!-- <th>date</th> -->
+            </tr>
+            <tr>
+                <td>{{name}}</td>
+                <td>{{report}}</td>
+                <td>{{age}}</td>
+                <td>{{gender}}</td>
+                <td>{{occupation}}</td>
+                <td>{{email}}</td>
+            </tr> 
+        </table>
+            <!-- <tbody id="a1">
+                <tr id="first">
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

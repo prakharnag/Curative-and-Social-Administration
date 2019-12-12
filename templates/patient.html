@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatabile" content="IE-Edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HOME | CASA</title>
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
 <style>
 img{
@@ -81,27 +81,27 @@ form{
     margin: 5rem;
 }
 #pass {
-    height: 20px;
+    height: 31px;
     margin-left: -22px;   
     padding-left: 1px;
     margin-top: 14px;
 }
 #username{
-    height: 20px;
+    height: 31px;
     margin-left: -22px;
     padding-left: 1px;
 }
 #pass_img {
     position: absolute;
-    bottom: 6px;
-    left: 193px;
+    bottom: 20px;
+    left: 160px;
     width: 24px;
     height: 21px;
 }
 #user_img {
     position: absolute;
-    bottom: 6px;
-    left: 198px;
+    bottom: 24px;
+    left: 166px;
     width: 13px;
     height: 16px;
 }
@@ -131,28 +131,28 @@ form{
                 <div class="header-right">
                     <a href="{{ url_for('hospital') }}">Hospital</a>
                     <a href="{{ url_for('patient') }}">Patient</a>
-                    <a href="#about">Pharma</a>
-                    <a href="#about">Insurance</a>
-                    <a href="#about">Contact Us</a>
+                    <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
+                    <a href="{{ url_for('insurance') }}">Insurance</a>
+                    <a href="{{ url_for('contact') }}">Contact Us</a>
                 </div>
-            </div>
-            <hr>
         </div>
+            <hr>
+        
         <div id="home">
                 <div id="ad">
                     <img src="/static/images/patient.png" id="admin">
                 </div>
-                 <form id="login" autocomplete="off" action="/">
+                 <form action="patientlogin" method="POST">
                     <div id="input_container">
-                        <input type="text" class="form-group" id="username" placeholder="User-Name"/>
+                        <input type="text" class="form-group" id="username" placeholder="User-Name" name="name"/>
                         <img src="/static/images/user.png" id="user_img"/> 
                     </div>
                     <div id="input_container">
-                        <input type="password" class="form-group" id="pass" placeholder="Password" value>
+                        <input type="text" class="form-group" id="pass" placeholder="unique-id" name="pid">
                         <img src="/static/images/password.jpeg" id="pass_img"/>   
                     </div>  
                     <div class="form-group" id="entry">
-                        <button type="submit" class="w3-button w3-grey w3-round-large" value="signin" id="buttons">Sign-In</button>                 
+                        <button type="submit" value="signin" id="buttons" name="action">Sign-In</button>                 
                    </div>
                 </form>
         </div>    

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatabile" content="IE-Edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HOME | CASA</title>
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 </head>
 <style>
 img{
@@ -80,27 +80,27 @@ form{
     margin: 5rem;
 }
 #pass {
-    height: 20px;
+    height: 31px;
     margin-left: 75px;   
     padding-left: 1px;
     margin-top: 14px;
 }
 #hospitalname{
-    height: 20px;
+    height: 31px;
     margin-left: 75px;
     padding-left: 0px;
 }
 #pass_img {
     position: absolute;
-    bottom: 6px;
-    left: 260px;
+    bottom: 20px;
+    left: 256px;
     width: 24px;
     height: 21px;
 }
 #user_img {
     position: absolute;
-    bottom: 6px;
-    left: 267px;
+    bottom: 23px;
+    left: 262px;
     width: 13px;
     height: 16px;
 }
@@ -131,14 +131,14 @@ form{
                 <div class="header-right">
                     <a href="{{ url_for('hospital') }}">Hospital</a>
                     <a href="{{ url_for('patient') }}">Patient</a>
-                    <a href="#about">Pharma</a>
-                    <a href="#about">Insurance</a>
-                    <a href="#about">Contact Us</a>
+                    <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
+                    <a href="{{ url_for('insurance') }}">Insurance</a>
+                    <a href="{{ url_for('contact') }}">Contact Us</a>
                 </div>
             </div>
             <hr>
         </div>
-        <form action="hospital_credentials" method="GET">
+        <form action="hospital_credentials" method="POST">
         <div id="home">
                 <div id="ad">
                     <img src="/static/images/hospital2.png" id="admin">
@@ -153,8 +153,8 @@ form{
                         <img src="/static/images/password.jpeg" id="pass_img"/>   
                     </div>  
                     <div class="form-group" id="entry">
-                        <button type="submit" class="w3-button w3-grey w3-round-large" value="login" id="buttons" name="action">Login</button>
-                        <button type="submit" class="w3-button w3-grey w3-round-large" value="signup" id="buttons" name="action">Sign-Up</button>
+                        <button type="submit"  value="login" id="buttons" name="action">Login</button>
+                        <button type="submit"  value="signup" id="buttons" name="action">Sign-Up</button>
 
                     </div>
              </form>

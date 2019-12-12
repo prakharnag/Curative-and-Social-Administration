@@ -116,15 +116,19 @@ margin-right:-10rem;
                 <div class="header-right">
                         <a href="{{ url_for('hospital') }}">Hospital</a>
                         <a href="{{ url_for('patient') }}">Patient</a>
-                        <a href="#about">Pharma</a>
-                        <a href="#about">Insurance</a>
-                        <a href="#about">Contact Us</a>
+                        <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
+                        <a href="{{ url_for('insurance') }}">Insurance</a>
+                        <a href="{{ url_for('contact') }}">Contact Us</a>
                 </div>
         </div>
         <hr>
 <a href="http://127.0.0.1:8089/">LOGOUT</a>
 <form action="/create_block" method="POST">
-         <div class="form-group">
+        <div class="form-group">
+                <label for="uname"><b> PATIENT UNIQUE-ID</b></label></td>
+                <input type="text" placeholder="Enter Patient Id" name="pid" required>
+        </div>
+        <div class="form-group">
 	        <label for="uname"><b> PATIENT NAME</b></label></td>
                 <input type="text" placeholder="Enter Name" name="name" required>
         </div>

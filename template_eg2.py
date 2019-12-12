@@ -16,8 +16,10 @@ import json
 import cgi
 from bson import Binary, Code
 from bson.json_util import dumps
-
-
+from bson import json_util
+import datetime
+import ast
+A=1
 client = MongoClient("localhost", 27017)
 
 def date_Time():
@@ -80,17 +82,30 @@ def contact():
 
 
 
-@app.route("/hospital_credentials")
+@app.route("/hospital_credentials",methods=["POST"])
 def hospital_signup():
 	action=request.values.get('action')
-	if(action=="signup"):
-		return render_template("hospital_signup.html")
-	elif(action=="login"):
-		if request.method == 'POST':
-	   		login_user=hospc.find({'name':request.form['name'], 'password':request.form['password']})
-			if login_user and User.validate_login(login_user['password'], request.form['password']):
+	if(action=="login"):
+		name=request.values.get('name')
+		print(type(name))
+		password=request.values.get('password')
+		query={"Hospital_name":name,"password":password}
+		mydoc=table_hospital.find(query)
+
+		for x in mydoc:
+			# print x
+			table_name=x["Hospital_name"]
+			table_pass=x["password"]
+			if(name==table_name and password==table_pass):
 				return render_template("homepage2.html")
-		flash("Wrong Login credentials")
+			elif(password!=table_pass):
+				flash("Wrong Login credentials")
+			x["_id"] = str(x["_id"])
+			print x["password"]
+			
+		
+	elif(action=="signup"):
+		return render_template("hospital_signup.html")
 
 @app.route("/homepage2",methods=["POST"])
 def signup():
@@ -111,66 +126,125 @@ def signup():
 		#flash(record)
 		return render_template("homepage2.html")
 
-		
-
-
-	# elif
-	# 	return render_template("")
-
-	# action=request.values.get('action')
-	# if(action=="ARE YOU A HOSPITAL"):
-   	#    return render_template("homepage2.html")
-	# elif(action=="ARE YOU A PATIENT"):
-	#    return render_template("patientlogin.html")
-
-# @app.route("/hospital")
-# def login():
-# 	action=request.values.get('action')
-# 	if(action=="login"):
-#   	   return render_template("blockchain.html")
-# 	#elif(action=="register"):
- 	  # return render_template("registerdb.html")
-
 
 @app.route("/patientmanage",methods=["POST"])
 def verify():
 	action=request.values.get('action')
-	if(action=="newlogin"):
+	# if(action=="newlogin"):
+	# 	return render_template("patient_info.html")
+	if(action=="exlogin"):
+		diagnostic_report=request.values.get('diagnosis')
+		patient_id=request.values.get('pid')
+		date = datetime.datetime.now()
+		print(type(patient_id))
+		# return render_template("home.html")
+		query={"hash":int(patient_id)}
+		# query={"pid":"2A"}
+		print(type(query))
+		mydocs=hash_control.find(query)
+		print(type(mydocs))
+		# return render_template("home.html")
+
+		for x in mydocs:
+			x["_id"]=str(x["_id"])
+			print x
+			# return render_template("home.html")
+			table_hash=x["hash"]
+			table_pid=x["pid"]
+			print x["hash"]
+			hashdoc=table_patient.insert({"pid":table_pid,"diagnostic_report":diagnostic_report,"date":date})
+
+			hash1=hash(hashdoc)
+			print(hash1)
+			hash_control.insert({"pid":table_pid,"hash":hash1})
+		
+		
+
+			blocks.append([])
+			global pID
+			new_Block= {
+			"prev_hash": hashes[pID-1],
+			"dataValues": hash1,
+			"datetime_object": date_Time()
+					}
+			block_serialized = json.dumps(new_Block, sort_keys=True).encode("utf-8")
+			new_Hash = hashlib.sha256(block_serialized).hexdigest()
+			blocks[pID].append(new_Block)
+			hashes.append(new_Hash)	
+			pID=pID+1
+			print hashes
+			print pID 
+			return render_template("homepage2.html")
+
+	elif(action=="newlogin"):	
 		return render_template("patient_info.html")
-		# flash("Wrong Login credentials")
-	# if request.method == 'POST':
-	#    login_user=hospc.find_one({'name':request.form['name']})
-	   
-	#    if login_user:
-	#       bcrypt.hashpw(request.form['password'].encode('utf-8'),login_user['password'].encode('utf-8'))==login_user['password'].encode('utf-8')
-	     
-	#       return render_template("blockchain.html")
-	
-	#    return render_template("error.html")
 
-@app.route("/error")
-def errors():
-        return render_template("homepage2.html")
+@app.route("/patientlogin",methods=["POST"])
+def patientlogin():
+	action=request.values.get('action')
+	return render_template("patient_view.html")
+	# if(action=="signin"):
+	# 	name=request.values.get('name')
+	# 	pid=request.values.get('pid')
+	# 	query={"name":name,"pid":pid}
+	# 	mydoc=table_patient.find(query)
+	# 	for x in mydoc:
+
+	# 		print x
+			# return render_template("patient_view.html")
+			# table_name=x["name"]
+			# table_email=x["email"]
+			# if(name==table_name and email==table_email):
+			# 	return render_template("patient_view.html")
+
+@app.route("/viewdata",methods=["POST"])
+def insurance_view_record():
+	# action=request.values.get('action')
+	# if(action=="enter"):
+		pid=request.values.get('pid')
+		print pid
+		unique_pid=request.values.get('unique_pid')
+		print unique_pid
+		# return render_template("home.html")
+
+		query={"hash":int(unique_pid),"pid":pid}
+		newdoc=hash_control.find(query)
+		# return render_template("home.html")
+		for x in newdoc:
+			x["_id"]=str(x["_id"])
+			print x
+			table_pid=x["pid"]
+			table_hash=x["hash"]
+			print table_hash
+			# return render_template("home.html")
+			# if(pid==table_pid and unique_pid==table_hash):
+				# print table_hash
+				# return render_template("home.html")
+			query_new={"pid":pid}
+			# patient_doc=[]
+			# patient_doc=table_patient.find(query_new)
+			patient_doc=list(table_patient.find(query_new))
+			print patient_doc
+			print type(patient_doc)	
+			for y in patient_doc:
+				# for y in z:
+					# y["_id"]=str(y["_id"])
+					# y=json.loads(y)
+					# ast.literal_eval(json.dumps(y))
+					# print type(y)
+					
+				
+				# return render_template("home.html")
+					# table_name=y
+				table_name=y['name']
+				table_dignostic_report=y['diagnostic_report']
+				table_age=y['age']
+				table_gender=y['gender']
+				table_occup=y['occupation']
+				table_email=y['email']
+				return render_template("insurance.html",name=table_name,report=table_dignostic_report,age=table_age,gender=table_gender,occupation=table_occup,email=table_email)
+					# return render_template("insurance.html",result=patient_doc)
 	   	
-
-#@app.route("/logout")
-#def logout():
-#	session.pop('logged_in', None)
- #  	flash('You were logged out.')
-  #  	return render_template("homepage1.html")
-
-	
-
-
-# @app.route("/block",methods=["POST"])
-# def block():
-# 	action=request.values.get('action')
-# 	if(action=="search"):
-#   	   return ''
-# 	elif(action=="add"):
-#  	   return ''
-# 	elif(action=="create"):
-#  	   return render_template("patient_info.html")
 
 @app.route("/create_block",methods=["POST"])
 def create():
@@ -178,7 +252,7 @@ def create():
 		existing_user=table_patient.find_one({'name': request.form['name']})
 	
 	if existing_user is None:
-		
+		patient_id=request.values.get('pid')
 		name=request.values.get('name')
 		age=request.values.get('age')
 		
@@ -195,14 +269,15 @@ def create():
 		email=request.values.get('email')
 		relation=request.values.get('relation')
 		date = datetime.datetime.now()
+		diagnostic_report=request.values.get('report')
 		
 
-		hashdoc=table_patient.insert({"name":name,"age":age,"occupation":occupation,"gender":gender,"email":email,"relation":relation,"date":date})
+		hashdoc=table_patient.insert({"pid":patient_id,"name":name,"age":age,"occupation":occupation,"gender":gender,"email":email,"relation":relation,"diagnostic_report":diagnostic_report,"date":date})
 		
 		
 		hash1=hash(hashdoc)
 		print(hash1)
-		hash_control.insert({"hash":hash1})
+		hash_control.insert({"pid":patient_id,"hash":hash1})
 		
 		
 		

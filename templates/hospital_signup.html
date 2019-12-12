@@ -92,11 +92,11 @@ button{
                     CASA
                 </div>
                 <div class="header-right">
-                    <a href="#home">Hospital</a>
-                    <a href="#contact">Patient</a>
-                    <a href="#about">Pharma</a>
-                    <a href="#about">Insurance</a>
-                    <a href="#about">Contact Us</a>
+                    <a href="{{ url_for('hospital') }}">Hospital</a>
+                    <a href="{{ url_for('patient') }}">Patient</a>
+                    <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
+                    <a href="{{ url_for('insurance') }}">Insurance</a>
+                    <a href="{{ url_for('contact') }}">Contact Us</a>
                 </div>
             </div>
             <hr>

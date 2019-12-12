@@ -59,27 +59,28 @@ button{
 }
 </style>
 <body>
-    <div class="header">        	
-        <div class="logo" style="float:left;position:relative;">
-            <img src="/static/images/casa.png " alt=""/>
-        </div>
-        <div class="header-left">
-            CASA
-        </div>
-        <div class="header-right">
-            <a href="{{ url_for('hospital') }}">Hospital</a>
-            <a href="{{ url_for('patient') }}">Patient</a>
-            <a href="#about">Pharma</a>
-            <a href="#about">Insurance</a>
-            <a href="#about">Contact Us</a>
-        </div>
+  <div class="header">        	
+    <div class="logo" style="float:left;position:relative;">
+        <img src="/static/images/casa.png"  alt="" />                	
     </div>
-    <hr>
+    <div class="header-left">
+        CASA
+    </div>
+    <div class="header-right">
+        <a href="{{ url_for('hospital') }}">Hospital</a>
+        <a href="{{ url_for('patient') }}">Patient</a>
+        <!-- <a href="{{ url_for('pharma') }}">Pharma</a> -->
+        <a href="{{ url_for('insurance') }}">Insurance</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+</div>
+<hr>
+</div>
 
 
 </style>
 <body>
-  <center>
+ <center>
     <form action="patientmanage" method="POST">
       <div class="form-group management">
         <h1>PATIENT MANAGEMENT</h1>
@@ -88,34 +89,31 @@ button{
         <label for="uname"><b>Patient Unique-Id</b></label>
       </div>
       <div class="form-group management">
-        <input type="text" placeholder="Enter Unique-Id" name="id">
+          <input type="text" placeholder="Enter Unique-Id" name="pid">
       </div>
       <div class="form-group management">
+        <label for="patient"><b>ADD DIAGNOSIS REPORT</b></label>
+      </div>
+      <div>
+        <input type="text" placeholder="Enter data" name="diagnosis">
+      </div>
+      
+      <div class="form-group management">
           <button type="submit" value="exlogin" name="action">EXISTING PATIENT
+      </div> 
+      <div> 
           <button type="submit" value="newlogin" name="action">NEW PATIENT
       </div>
-         <!-- <table>
-        <tr>
-          <th>PATIENT MANAGEMENT</th>    
-        </tr>    
-        <tr><td> <label for="uname"><b>Patient Unique-Id</b></label></td></tr>
-        <tr><td><input type="text" placeholder="Enter Unique-Id" name="id" ></td></tr>
-   -->
-         <!-- <tr><td> <label for="psw2"><b>PASSWORD</b></label>
-         <tr><td> <input type="password" placeholder="Enter Password" name="password"></td></tr>
-	 -->
-	 <!-- <tr><td><button type="submit" value="exlogin" name="action">EXISTING PATIENT</td></tr>
-	    <tr> <td><button type="submit" value="newlogin" name="action">NEW PATIENT</td></tr> -->
-
 
 	 
 
 	
 	
-	 </table>
-</form>
-</center>
-</script>
 
+</form>
+
+
+
+</center>
 </body>
 </html>
